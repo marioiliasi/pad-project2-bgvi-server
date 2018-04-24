@@ -26,7 +26,7 @@ public class ServletTest extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//http://localhost:8080/test?name=ana2 - intra pe link-ul asta dupa ce pornesti aplicatia
+		
 		String name = req.getParameter("name");
 		
 		if(name == null || name.length() == 0) {
