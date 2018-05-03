@@ -10,13 +10,13 @@
   </listener>
   
   <servlet>
-	  <servlet-name>Test</servlet-name>
-	  <servlet-class>com.pad.bgvi.server.servlets.ServletTest</servlet-class>
+	  <servlet-name>Products</servlet-name>
+	  <servlet-class>com.pad.bgvi.server.servlets.ProductsServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
-	  <servlet-name>Test</servlet-name>
-	  <url-pattern>/test</url-pattern>
+	  <servlet-name>Products</servlet-name>
+	  <url-pattern>/products</url-pattern>
 	</servlet-mapping>
 	
 </web-app>

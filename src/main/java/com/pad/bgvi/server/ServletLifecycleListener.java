@@ -28,15 +28,20 @@ public class ServletLifecycleListener implements ServletContextListener{
 		initHibernate(context);
 		log.info("SERVER ONLINE...");
 		
-		//georgi
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		
+		/*Session session = HibernateUtil.getSessionFactory().openSession();
 		//creating transaction object
 		Transaction t=session.beginTransaction();
 		Product p = new Product();
 		p.setName("whatever");
-		session.persist(p);//persisting the object
-		t.commit();//transaction is commited
-		session.close();//always close the session when you modify something or flush the transaction but when you're done close the session
+		p.setDescription("fuck off :*");
+		p.setCategoryType(1);
+		p.setImage("assets/dans_dama.jpg");
+		p.setPrice(1000000);
+		p.setQuantity(234);
+		session.persist(p);
+		t.commit();
+		session.close();*/
 	}
 	
 	private void initHibernate(ServletContext context) {
