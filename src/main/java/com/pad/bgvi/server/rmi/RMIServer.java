@@ -1,8 +1,11 @@
 package com.pad.bgvi.server.rmi;
 
 import java.net.MalformedURLException;
+import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 import com.pad.bgvi.common.IRMIServer;
@@ -18,10 +21,12 @@ public class RMIServer extends UnicastRemoteObject implements IRMIServer {
 		super();
 	}
 
-	public static void init() throws RemoteException, MalformedURLException {
+	public static void init() throws RemoteException, MalformedURLException, AlreadyBoundException {
 		if (server == null) {
 			server = new RMIServer();
-			Naming.rebind(RMIServerUtil.URI, server);
+			Registry reg = LocateRegistry.createRegistry(1099);
+			//System.out.println("Server is ready");
+			reg.rebind(RMIServerUtil.URI, server);
 		} else {
 			destroy();
 			init();

@@ -1,6 +1,7 @@
 package com.pad.bgvi.server;
 
 import java.net.MalformedURLException;
+import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 
 import javax.servlet.ServletContext;
@@ -23,11 +24,11 @@ public class ServletLifecycleListener implements ServletContextListener{
 
 	public void contextInitialized(ServletContextEvent sce) {
 		
-		log.info("Starting server...");
+		System.out.println("STARTING SERVER...");
 		ServletContext context = sce.getServletContext();
 		initHibernate(context);
 		initRMIServer();
-		log.info("SERVER ONLINE...");
+		System.out.println("SERVER ONLINE...");
 		
 		/*Session session = HibernateUtil.getSessionFactory().openSession();
 		//creating transaction object
@@ -49,6 +50,8 @@ public class ServletLifecycleListener implements ServletContextListener{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (AlreadyBoundException e) {
 			e.printStackTrace();
 		}
 	}
