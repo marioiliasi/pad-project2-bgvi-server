@@ -1,16 +1,16 @@
 package com.pad.bgvi.server;
 
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-import com.pad.bgvi.server.model.Product;
+import com.pad.bgvi.server.rmi.RMIServer;
 import com.pad.bgvi.server.utils.HibernateUtil;
 
 public class ServletLifecycleListener implements ServletContextListener{
@@ -26,8 +26,8 @@ public class ServletLifecycleListener implements ServletContextListener{
 		log.info("Starting server...");
 		ServletContext context = sce.getServletContext();
 		initHibernate(context);
+		initRMIServer();
 		log.info("SERVER ONLINE...");
-		
 		
 		/*Session session = HibernateUtil.getSessionFactory().openSession();
 		//creating transaction object
@@ -42,6 +42,15 @@ public class ServletLifecycleListener implements ServletContextListener{
 		session.persist(p);
 		t.commit();
 		session.close();*/
+	}
+	private void initRMIServer() {
+		try {
+			RMIServer.init();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void initHibernate(ServletContext context) {

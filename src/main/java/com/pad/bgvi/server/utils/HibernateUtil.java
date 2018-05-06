@@ -1,8 +1,5 @@
 package com.pad.bgvi.server.utils;
 
-import java.io.InputStream;
-import java.net.URL;
-
 import javax.servlet.ServletContext;
 
 import org.apache.logging.log4j.LogManager;

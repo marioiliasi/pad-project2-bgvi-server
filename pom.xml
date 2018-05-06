@@ -8,6 +8,13 @@
 	<name>bgvi Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
+	
+		<dependency>
+			<groupId>com.pad.bgvi</groupId>
+			<artifactId>bgvi-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
