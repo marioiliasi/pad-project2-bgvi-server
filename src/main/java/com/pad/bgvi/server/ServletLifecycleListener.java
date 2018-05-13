@@ -2,7 +2,10 @@ package com.pad.bgvi.server;
 
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
+import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -11,7 +14,8 @@ import javax.servlet.ServletContextListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.pad.bgvi.server.rmi.RMIServer;
+import com.pad.bgvi.common.RMIServerUtil;
+import com.pad.bgvi.server.rmi.ShopImpl;
 import com.pad.bgvi.server.utils.HibernateUtil;
 
 public class ServletLifecycleListener implements ServletContextListener{
@@ -46,12 +50,13 @@ public class ServletLifecycleListener implements ServletContextListener{
 	}
 	private void initRMIServer() {
 		try {
-			RMIServer.init();
+			ShopImpl server = new ShopImpl();
+			Registry reg = LocateRegistry.createRegistry(1099);
+			// System.out.println("Server is ready");
+			// reg.rebind(RMIServerUtil.URI, server);
+			//Remote r = new ShopImpl();
+			reg.rebind(RMIServerUtil.URI, server);
 		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (AlreadyBoundException e) {
 			e.printStackTrace();
 		}
 	}

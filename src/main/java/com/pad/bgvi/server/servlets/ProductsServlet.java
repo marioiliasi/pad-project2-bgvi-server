@@ -95,7 +95,7 @@ public class ProductsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			String tmp;
-			long quantity = -1;
+			int quantity = -1;
 			double price = -1;
 			String name = "";
 			byte[] img = null;

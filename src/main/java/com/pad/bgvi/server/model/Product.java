@@ -18,7 +18,7 @@ public class Product extends Entity{
 	@Column(name = "IMAGE")
 	private String image;
 	@Column(name = "QUANTITY")
-	private long quantity;
+	private int quantity;
 	
 	public int getCategoryType() {
 		return categoryType;
@@ -50,10 +50,10 @@ public class Product extends Entity{
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public long getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(long quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 }
